@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 // import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import WishList from "../src/Components/Wishlist"
 import pokemonJSON from "./static/released_pokemon.json";
 
 function App() {
-  let availablePokemon = [];
+  const availablePokemon = [];
+  const [userWishlist, setUserWishlist] = useState([]);
   const [pokemonPicker, setPokemonPicker] = useState("Select a Pokemon");
   let handlePokemonchange = (e) => {
     setPokemonPicker(e.target.value);
-    console.log(pokemonPicker);
   }
-  const addToWishList = () => {
-    alert("Hello!");
-  };
+ useEffect(() => {
+  console.log("UserWishlist: " + userWishlist);
+}, [userWishlist]);
+  // const addToWishList = (userWishlist, userWishlist, setUserWishlist) => {
+  //   // alert("Add clicked");
+  //   setUserWishlist([...userWishlist, pokemonPicker]);
+  // };
   // Push pokemon to Available Pokemon Array
   Object.keys(pokemonJSON).forEach((key) =>
   {
@@ -22,6 +28,7 @@ function App() {
   });
   return (
     <div className="App">
+      <WishList userWishlist={userWishlist}></WishList>
       <header className="App-header">
         {pokemonPicker}
         <select onChange={handlePokemonchange}> 
@@ -33,7 +40,14 @@ function App() {
               )
           }
         </select>
-        <Button variant="outline-primary" onClick={addToWishList}>Add</Button>
+        <Button 
+          variant="outline-primary"
+          type="button"
+          onClick={
+            () => setUserWishlist((oldArray) => [...oldArray,pokemonPicker])
+          }>
+            Add
+        </Button>
       </header>
 
     </div>
