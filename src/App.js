@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 // import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,7 +30,9 @@ function App() {
   });
   return (
     <div className="App">
-      <WishList userWishList={userWishlist} />
+      <div className="App-container">
+        <WishList userWishList={userWishlist} />
+      </div>
       <header className="App-header">
         {pokemonPicker}
         <select onChange={handlePokemonchange}> 
