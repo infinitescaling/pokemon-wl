@@ -18,7 +18,7 @@ function App() {
     setUserWishlist([]);
   }, []);
  useEffect(() => {
-  console.log("UserWishlist: " + userWishlist);
+  // console.log("UserWishlist: " + userWishlist);
 }, [userWishlist]);
   // const addToWishList = (userWishlist, userWishlist, setUserWishlist) => {
   //   // alert("Add clicked");
@@ -31,7 +31,7 @@ function App() {
   });
   return (
     <div className="App">
-      <WishList list={userWishlist} />
+      <WishList userWishList={userWishlist} />
       <header className="App-header">
         {pokemonPicker}
         <select onChange={handlePokemonchange}> 

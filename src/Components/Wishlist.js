@@ -2,25 +2,21 @@ import React, { useEffect, useState } from "react";
 import ListGroup from 'react-bootstrap/ListGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function WishList(list) {
-    const userWishList = list.userWishList;
-    console.log("Wishlist Component: " + list.userWishList);
+export default function WishList(props) {
+    const userWishList = props.userWishList;
+    // console.log("Wishlist Component value of userWishList: " + userWishList);
+    // console.log("Wishlist list: " + JSON.stringify(props));
   return (
-    <div>{userWishList}
-
-        {/* <ListGroup>
+    <div>
+        <ListGroup>
             {
-                userWishList ? (
-                    userWishList.map((pokemon) => (
-                        <ListGroup.Item className="modal-bg">
-                            pokemon
-                        </ListGroup.Item>
-                    ))
-                ) : (
-                    <></>
-                )
+                userWishList.map((pokemon) => (
+                    <ListGroup.Item className="modal-bg">
+                        {pokemon}
+                    </ListGroup.Item>
+                ))
             }
-        </ListGroup> */}
+        </ListGroup>
     </div>
   );
 }
