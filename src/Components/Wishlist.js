@@ -11,7 +11,7 @@ export default function WishList(props) {
         <ListGroup>
             {
                 userWishList.map((pokemon) => (
-                    <ListGroup.Item className="modal-bg">
+                    <ListGroup.Item variant="success" className="modal-bg">
                         {pokemon}
                     </ListGroup.Item>
                 ))
